@@ -14,11 +14,11 @@
           dest: /root
         with_items:
           [ 'nginx.yml','filebeat.yml','docker-compose.yml','index.html' ]
-     # - name: install filebeat & nginx via docker compose
-     #   command: docker compose -f /root/docker-compose.yml up -d
-     # - name: curl localhost:80
-     #   command: curl http://localhost:80
-     #   register: result
-     # - name: print result
-     #   debug:
-     #     msg: " {{ result }} "
+      - name: install filebeat & nginx via docker compose
+        command: docker compose -f /root/docker-compose.yml up -d
+      - name: curl localhost:80
+        command: curl http://localhost:80
+        register: result
+      - name: print result
+        debug:
+          msg: " {{ result }} "
