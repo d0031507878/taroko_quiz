@@ -5,7 +5,7 @@ services:
     container_name: filebeat
     user: root
     volumes:
-      - /root/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - /root/filebeat.yml.j2:/usr/share/filebeat/filebeat.yml
       - /var/lib/docker/containers:/var/lib/docker/containers
       - /var/run/docker.sock:/var/run/docker.sock
       - /root/nginx.yml:/usr/share/filebeat/modules.d/nginx.yml
