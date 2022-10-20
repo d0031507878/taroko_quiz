@@ -59,7 +59,7 @@ When pull_request happens on any branch, it will trigger this workflow.
 
 A job called test that runs on ubuntu and then runs two containers, one for postgres and one for redis.
 
-First step is use actions/checkout@v3 to put the github repository code to ubuntu environment so we can let workflow to use.
+First step is use actions/checkout@v3 to put the github repository code to ubuntu environment so we can let this workflow to use.
 
 Then we install ruby with version 2.7.3 and libpq-dev for postgresql
 and bundler installed to solve dependencies problem.
@@ -67,6 +67,6 @@ and bundler installed to solve dependencies problem.
 Then we setup database , copy yml for database and create database depends on env (RAILS_ENV: test) and initialize the database and install all dependencies through yarn install and precomplie the code to produce the things needed by website
 
 We have some env variables defined so we can change easily if we have different settings on postgres's database,username and password.
-The env variables setting can avoid the hardcode in many files.
+Also, the env variables setting can avoid the hardcode in many files.
 
-Finally, use Rspec run the tests to check everything works or not.
+Finally, use Rspec run the tests to check everything works or not and skip looking for "spec/features/*" in spec directory
