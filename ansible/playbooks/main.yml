@@ -1,0 +1,24 @@
+---
+  - name: setup filebeat & nginx and send log to es
+    hosts: "{{ target_hosts | default('a137') }}"
+    gather_facts: false
+    ignore_unreachable: true
+    vars_files:
+      - ./files/filebeat.yml
+    tasks:
+      - name: touch access.log 
+        command: touch /root/access.log
+      - name: copy file to target host
+        copy:
+          src: ./files/{{item}}
+          dest: /root
+        with_items:
+          [ 'nginx.yml','filebeat.yml','docker-compose.yml','index.html' ]
+     # - name: install filebeat & nginx via docker compose
+     #   command: docker compose -f /root/docker-compose.yml up -d
+     # - name: curl localhost:80
+     #   command: curl http://localhost:80
+     #   register: result
+     # - name: print result
+     #   debug:
+     #     msg: " {{ result }} "

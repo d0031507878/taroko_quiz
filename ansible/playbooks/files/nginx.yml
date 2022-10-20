@@ -1,0 +1,10 @@
+- module: nginx
+  # Access logs
+  access:
+    enabled: true
+    var.paths: ["/usr/share/filebeat/access.log"]
+
+  # Error logs
+  error:
+    enabled: true
+    var.paths: ["/usr/share/filebeat/error.log"]

@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  filebeat:
+    image: elastic/filebeat:8.4.3
+    container_name: filebeat
+    user: root
+    volumes:
+      - /root/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - /var/lib/docker/containers:/var/lib/docker/containers
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/nginx.yml:/usr/share/filebeat/modules.d/nginx.yml
+      - /root/access.log:/var/log/nginx/access.log
+  nginx:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - /root/index.html:/usr/share/nginx/html/index.html
+      - /root/access.log:/var/log/nginx/access.log
+    ports:
+      - "80:80"
