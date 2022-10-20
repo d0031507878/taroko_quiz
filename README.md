@@ -36,11 +36,11 @@ We have three services defined and all three services behave almost the same.
 
 The differences between each other are the image name, args be passed into $TARGET, ports number.
 
-It will create three images with different name but base on same Dockerfile and running three containers with ports 8080~8082:8000
+If image doesn't exist, it will create three images with different name but base on same Dockerfile and running three containers with ports 8080~8082:8000
 
-Basically, they point to the same Dockerfile that defined in "context: ." , same default network setting and the same target "build-env".
+Basically, they point to the same Dockerfile that defined in "context: ." , same default network setting and the same target "build-env" in Dockerfile.
 
-By the way, indent in auth service (args) seems to be wrong.
+#### By the way, indent in auth service (args) seems to be wrong.
 
 
 
