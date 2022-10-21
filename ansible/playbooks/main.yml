@@ -18,7 +18,7 @@
       - name: install filebeat & nginx via docker compose
         community.docker.docker_compose: 
           project_src: /root
-          state: absent
+          state: present
       - name: curl localhost:80
         command: curl http://localhost:80
         register: result
